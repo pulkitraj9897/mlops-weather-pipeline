@@ -24,3 +24,13 @@ jobs:
           git add data/raw/weather.csv
           git commit -m "Automated weather data update"
           git push
+        name: Process data
+        run: python scripts/process_data.py
+      - name: Commit processed data
+        run: |
+          git add data/processed/weather_clean.csv
+          git commit -m "Automated data processing"
+          git push
+      - name: Create required folders
+        run: |
+          mkdir -p data/raw data/processed models
